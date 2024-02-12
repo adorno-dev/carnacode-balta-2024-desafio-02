@@ -1,0 +1,45 @@
+﻿@page "/"
+
+<PageTitle>Main</PageTitle>
+
+@if (IMC is null)
+{
+    <EditForm Enhance="true" FormName="PacienteForm" Model="Model" OnValidSubmit="Submit" method="POST" class="full">
+        <h2>Cálculo de IMC</h2>
+        <InputNumber @bind-Value="Model!.Altura" placeholder="Altura" autocomplete="off" />
+        <ValidationMessage For="() => Model.Altura" />
+        <InputNumber @bind-Value="Model!.Peso" placeholder="Peso" autocomplete="off" />
+        <ValidationMessage For="() => Model.Peso" />
+        <InputText @bind-Value="Model!.Sexo" placeholder="Sexo" autocomplete="off" type="text" />
+        <ValidationMessage For="() => Model.Sexo" />
+        <div class="checkbox">
+            <InputCheckbox @bind-Value="Model!.Idoso" id="age" />
+            <label for="age">Eu tenho 65 anos ou mais</label>
+        </div>
+        <button type="submit">Calcular meu IMC</button>
+        <button>Entenda o cálculo</button>
+        <DataAnnotationsValidator />
+    </EditForm>
+}
+else if (!Model.Idoso)
+{
+    if (IMC < 18.5)
+    { <GoodResult Situacao="com baixo peso" /> }
+    else if (IMC >= 18.5 && IMC < 25)
+    { <GoodResult Situacao="com o peso normal" /> }
+    else if (IMC >= 25 && IMC < 30)
+    { <BadResult Situacao="com sobrepeso" /> }
+    else if (IMC >= 30)
+    { <BadResult Situacao="com obesidade" /> }
+}
+else
+{
+    if (IMC < 22)
+    { <GoodResult Situacao="com baixo peso" /> }
+    else if (IMC >= 22 && IMC <= 27)
+    { <GoodResult Situacao="com o peso normal" /> }
+    else if (IMC > 27 && IMC < 30)
+    { <BadResult Situacao="com sobrepeso" /> }
+    else if (IMC >= 30)
+    { <BadResult Situacao="com obesidade" /> }
+}

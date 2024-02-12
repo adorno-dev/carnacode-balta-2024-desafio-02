@@ -1,0 +1,94 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/developer/Sources/dotnet/carnacode-balta-2024-desafio-02/Imc/Imc.csproj": {}
+  },
+  "projects": {
+    "/home/developer/Sources/dotnet/carnacode-balta-2024-desafio-02/Imc/Imc.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/developer/Sources/dotnet/carnacode-balta-2024-desafio-02/Imc/Imc.csproj",
+        "projectName": "Imc",
+        "projectPath": "/home/developer/Sources/dotnet/carnacode-balta-2024-desafio-02/Imc/Imc.csproj",
+        "packagesPath": "/home/developer/.nuget/packages/",
+        "outputPath": "/home/developer/Sources/dotnet/carnacode-balta-2024-desafio-02/Imc/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/developer/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/opt/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Blazored.LocalStorage": {
+              "target": "Package",
+              "version": "[4.5.0, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.AspNetCore.Components.WebAssembly.DevServer": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.NET.ILLink.Tasks": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.1, )",
+              "autoReferenced": true
+            },
+            "Microsoft.NET.Sdk.WebAssembly.Pack": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.1, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/opt/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      },
+      "runtimes": {
+        "browser-wasm": {
+          "#import": []
+        }
+      }
+    }
+  }
+}

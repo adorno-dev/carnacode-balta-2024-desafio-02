@@ -1,0 +1,14 @@
+<form>
+    <img src="assets/icon-no-bg.png" alt="">
+    <h2>✅ Parabéns!</h2>
+    <p class="hint">Você está @Situacao, continue mantendo este estilo!</p>
+    <button type="submit">Registrar Medidas</button>
+    <button @onclick="History">Ver meu histórico</button>
+</form>
+
+@code {
+    [Parameter]
+    public string? Situacao { get; set; }
+    public void Save() {}
+    public void History() => navigationManager.NavigateTo("/history");
+}
