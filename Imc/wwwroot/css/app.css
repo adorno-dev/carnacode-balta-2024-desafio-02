@@ -111,7 +111,8 @@ ul li {
     margin: 15px 0;
 }
 
-ul li img {
+ul li section {
+    display: flex;
     background: #f6f6f6;
     border: 1px solid #f6f6f6;
     border-radius: 8px;
@@ -119,6 +120,16 @@ ul li img {
     width: 50px;
     min-width: 50px;
     min-height: 50px;
+
+    align-items: center;
+    justify-content: center;
+    
+}
+
+ul li section small {
+    font-size: xx-small;
+    font-weight: bold;
+    scale: 0.8;
 }
 
 ul li > div {
@@ -179,6 +190,14 @@ ul li span {
 
 .overflow-auto {
     overflow: auto;
+}
+
+.color-green {
+    color: green !important;
+}
+
+.color-red {
+    color: red !important;
 }
 
 /*  */
