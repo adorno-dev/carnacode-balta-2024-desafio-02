@@ -3,7 +3,7 @@ using Imc.Services.Contracts;
 
 namespace Imc.Services;
 
-public sealed class PatientValidation : IPatientValidation
+public sealed class PatientService : IPatientService
 {
     private const byte LOW_WEIGHT = 0;
     private const byte NORMAL_WEIGHT = 1;

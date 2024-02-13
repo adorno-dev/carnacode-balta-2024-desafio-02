@@ -1,8 +1,14 @@
+@font-face {
+    font-family: 'Inter';
+    src: local('Inter'),
+         url('../fonts/Inter/static/Inter-Medium.ttf')
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Inter Medium';
+    font-family: 'Inter';
     list-style: none;
 }
 
@@ -127,9 +133,7 @@ ul li section {
 }
 
 ul li section small {
-    font-size: xx-small;
     font-weight: bold;
-    scale: 0.8;
 }
 
 ul li > div {

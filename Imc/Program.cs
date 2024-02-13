@@ -11,6 +11,6 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 builder.Services.AddBlazoredLocalStorageAsSingleton();
-builder.Services.AddSingleton<IPatientValidation, PatientValidation>();
+builder.Services.AddSingleton<IPatientService, PatientService>();
 
 await builder.Build().RunAsync();

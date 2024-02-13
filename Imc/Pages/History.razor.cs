@@ -1,6 +1,5 @@
 using Imc.Models;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
 
 namespace Imc.Pages;
 
@@ -15,37 +14,25 @@ public sealed partial class History : ComponentBase
     {
         records = await localStorage.GetItemAsync<List<Record>>("records") ?? [];
 
-        recordList = !string.IsNullOrEmpty(SearchTerm) ?
-            records.Select(s => s.Aged ? patientValidation.AgedValidation(s.IMC, s.Timestamp)! : patientValidation.RegularValidation(s.IMC, s.Timestamp)!)
-                   .Select(s => s!.Value)
-                   .Where(w => w.Title.Contains(SearchTerm, StringComparison.CurrentCultureIgnoreCase) || 
-                               w.Description.Contains(SearchTerm, StringComparison.CurrentCultureIgnoreCase))
-                   .OrderByDescending(o => o.Timestamp)
-                   .ToList() :
-            records.Select(s => s.Aged ? patientValidation.AgedValidation(s.IMC, s.Timestamp) : patientValidation.RegularValidation(s.IMC, s.Timestamp))
-                   .Select(s => s!.Value)
-                   .OrderByDescending(o => o.Timestamp)
-                   .ToList();
-        
-        Console.WriteLine(recordList.Count);
+        recordList = records.Select(s => s.Aged ? patientService.AgedValidation(s.IMC, s.Timestamp) : patientService.RegularValidation(s.IMC, s.Timestamp))
+                .Select(s => s!.Value)
+                .OrderByDescending(o => o.Timestamp)
+                .ToList();
     }
 
     public void SearchTermChanged(ChangeEventArgs e)
     {
         SearchTerm = e.Value!.ToString();
 
-        recordList = !string.IsNullOrEmpty(SearchTerm) ?
-            records?.Select(s => s.Aged ? patientValidation.AgedValidation(s.IMC, s.Timestamp)! : patientValidation.RegularValidation(s.IMC, s.Timestamp)!)
-                   .Select(s => s!.Value)
-                   .Where(w => w.Title.Contains(SearchTerm, StringComparison.CurrentCultureIgnoreCase) || 
-                               w.Description.Contains(SearchTerm, StringComparison.CurrentCultureIgnoreCase))
-                   .OrderByDescending(o => o.Timestamp)
-                   .ToList() :
-            records?.Select(s => s.Aged ? patientValidation.AgedValidation(s.IMC, s.Timestamp) : patientValidation.RegularValidation(s.IMC, s.Timestamp))
-                   .Select(s => s!.Value)
-                   .OrderByDescending(o => o.Timestamp)
-                   .ToList();
+        if (SearchTerm is not null)
 
+            recordList = records?.Select(s => s.Aged ? patientService.AgedValidation(s.IMC, s.Timestamp)! : patientService.RegularValidation(s.IMC, s.Timestamp)!)
+                                .Select(s => s!.Value)
+                                .Where(w => w.Title.Contains(SearchTerm, StringComparison.CurrentCultureIgnoreCase) || 
+                                            w.Description.Contains(SearchTerm, StringComparison.CurrentCultureIgnoreCase) ||
+                                            w.IMC.ToString()!.Contains(SearchTerm, StringComparison.CurrentCultureIgnoreCase))
+                                .OrderByDescending(o => o.Timestamp)
+                                .ToList();
         StateHasChanged();
     }
 

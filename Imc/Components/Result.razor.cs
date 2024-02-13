@@ -22,9 +22,9 @@ public sealed partial class Result : ComponentBase
         records = await localStorage.GetItemAsync<List<Record>>("records") ?? [];
 
         if (Patient.Aged)
-            RecordResult = patientValidation.AgedValidation(Patient.IMC!.Value);
+            RecordResult = patientService.AgedValidation(Patient.IMC!.Value);
         else
-            RecordResult = patientValidation.RegularValidation(Patient.IMC!.Value);
+            RecordResult = patientService.RegularValidation(Patient.IMC!.Value);
     }
 
     public async void Submit() 
