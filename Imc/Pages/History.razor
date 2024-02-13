@@ -6,7 +6,7 @@
 
         <h2>Histórico</h2>
 
-        <input type="search" placeholder="Pesquisar..." @onchange="@SearchChanged" />
+        <input type="search" placeholder="Pesquisar..." value="@SearchTerm" @oninput="SearchTermChanged" />
 
         <ul>
             @if (recordList is not null && recordList.Any())

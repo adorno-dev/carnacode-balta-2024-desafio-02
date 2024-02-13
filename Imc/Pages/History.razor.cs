@@ -9,12 +9,7 @@ public sealed partial class History : ComponentBase
     private List<Record>? records { get; set; }
     private List<RecordResult>? recordList { get; set; } = [];
 
-
-
-    public string? SearchTerm { get; set; }
-
-    [Parameter]
-    public EventCallback<string> OnSearchChanged { get; set; }
+    private string? SearchTerm { get; set; }
 
     protected override async Task OnInitializedAsync() 
     {
@@ -35,9 +30,9 @@ public sealed partial class History : ComponentBase
         Console.WriteLine(recordList.Count);
     }
 
-    public void SearchChanged(ChangeEventArgs e)
+    public void SearchTermChanged(ChangeEventArgs e)
     {
-        Console.WriteLine(e.Value);
+        SearchTerm = e.Value!.ToString();
 
         recordList = !string.IsNullOrEmpty(SearchTerm) ?
             records?.Select(s => s.Aged ? patientValidation.AgedValidation(s.IMC, s.Timestamp)! : patientValidation.RegularValidation(s.IMC, s.Timestamp)!)
@@ -51,6 +46,7 @@ public sealed partial class History : ComponentBase
                    .OrderByDescending(o => o.Timestamp)
                    .ToList();
 
+        StateHasChanged();
     }
 
     public void GoToMain() => navigationManager.NavigateTo("/");
