@@ -5,11 +5,11 @@ namespace Imc.Models;
 public class Patient
 {
     [Required(ErrorMessage = "Informe a altura.")]
-    public float? Height { get; set; } = 1.75f;
+    public float? Height { get; set; }
     [Required(ErrorMessage = "Informe o peso.")]    
-    public float? Weight { get; set; } = 70f;
+    public float? Weight { get; set; }
     [Required(ErrorMessage = "Informe o sexo.")]
-    public string? Gender { get; set; } = "Masculino";
+    public string? Gender { get; set; }
     public float? IMC { get; set; }
     public bool Aged { get; set; }
 }
