@@ -1,34 +1,29 @@
     @page "/history"
     @inject ILocalStorageService localStorage
 
-    <form class="full">
-        <img src="assets/icon-no-bg.png" class="icon" alt="">
+    <form data-enhance class="full overflow-auto">
+        <img src="assets/icon-no-bg.png" class="icon" alt="" @onclick="GoToMain">
 
         <h2>Histórico</h2>
 
-        <input type="search" placeholder="Pesquisar..." />
+        <input type="search" placeholder="Pesquisar..." @onchange="@SearchChanged" />
+
         <ul>
-            <li>
-                <img src="#" alt="" />
-                <div>
-                    <div>
-                        <b>Peso ideal ✅</b>
-                        <span>8m atrás</span>
-                    </div>
-                    <p>Parabéns, você está no seu peso ideal, continue mantendo este estilo!</p>
-                </div>
-            </li>
-
-            <li>
-                <img src="#" alt="" />
-                <div>
-                    <div>
-                        <b>Sobrepeso ⛔</b>
-                        <span>12/10/2023</span>
-                    </div>
-                    <p>Estamos quase lá! Faça alguns ajustes para ficar no peso ideal!</p>
-                </div>
-            </li>
-
+            @if (recordList is not null && recordList.Any())
+            {
+                foreach (var record in recordList)
+                {
+                    <li>
+                        <img src="#" alt="" />
+                        <div>
+                            <div>
+                                <b>@record.Title  @record.Emoji</b>
+                                <span>@record.Timestamp?.ToShortDateString()</span>
+                            </div>
+                            <p>@record.Description</p>
+                        </div>
+                    </li>
+                }
+            }
         </ul>
     </form>

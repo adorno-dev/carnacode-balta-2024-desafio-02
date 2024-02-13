@@ -103,6 +103,7 @@ form > img {
 
     background: #fff;
     margin: -60px auto -10px;
+    cursor: pointer;
 } 
 
 ul li {
@@ -161,6 +162,7 @@ ul li span {
 
 .icon {
     margin: 0 auto !important;
+    cursor: pointer;
 }
 
 .splash {
@@ -173,6 +175,10 @@ ul li span {
 
     background: #fff;
     margin: auto;
+}
+
+.overflow-auto {
+    overflow: auto;
 }
 
 /*  */
